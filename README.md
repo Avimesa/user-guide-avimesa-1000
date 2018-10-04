@@ -82,7 +82,7 @@ Figure 1 calls out the main components that are used in this guide:
 <a id="2.-quick-start"></a>
 ## 2. Quick Start
 
-The following assumes that the Avimesa Gateway is configured and running.  Please see [here](https://github.com/Avimesa/user-guide-avimesa-gateway) for help on setting up the Avimesa Gateway.
+The following assumes that the Avimesa Gateway is configured and running.  Please see [here](https://github.com/Avimesa/user-guide-avimesa-gateway-for-rpi) for help on setting up the Avimesa Gateway.
 
 1. Attach the antenna to the `Antenna Connector` (Figure 1-C)
 2. Attach power to the `Power Connector` (Figure 1-G)
@@ -185,8 +185,8 @@ After boot up, the normal state of the device is `Run Mode`.  In the mode, the d
 ### 5.3 Service Mode
 When the device isn't configured it will boot up into `Service Mode`.  The device can also be manually forced into 'service mode' through the following sequence.
 
-1. Soft reset the device by momentarily pressing the `Reset` button (Figure 1-C)
-2. Immediately after the device resets (before the device transitions to `Run Mode`), press the `Reset` button (Figure 1-C)
+1. Soft reset the device by momentarily pressing the `Reset` button (Figure 1-F)
+2. Immediately after the device resets (before the device transitions to `Run Mode`), press the `Reset` button (Figure 1-F)
 
 <a id="5.4-device-modes-fw-update-mode"></a>
 ### 5.4 Firmware Update Mode
