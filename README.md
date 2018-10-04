@@ -73,7 +73,7 @@ Figure 1 calls out the main components that are used in this guide:
 *Figure 1*
 
 
-[//]: # (This may be the most platform independent comment)
+
 
 
 
