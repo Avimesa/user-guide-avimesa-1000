@@ -34,23 +34,39 @@ This project contains a user guide for the Avimesa 1000.  Designed to connect wi
     - [7.1 Pinout](#7.1-sensor-conn-pinout)
     - [7.2 Shielded Cables](#7.2-sensor-conn-shield)
 - [8. Device Configuration](#8.-device-config)
+    - [8.1 Measurement Schedule / Sleep Time](#8.1-device-config-meas-sched)
+    - [8.2 Channel Settings](#8.2-device-config-channel-settings)
+        - [8.2.1 Channel Enabled](#8.2.1-device-config-channel-settings-enable)
+        - [8.2.2 Channel Schedule](#8.2.2-device-config-channel-settings-sched)
+        - [8.2.3 4-20 mA Channel Settling Time](#8.2.3-device-config-channel-settings-settling-time)
+        - [8.2.4 GPIO Channel Settings](#8.2.4-device-config-channel-settings-gpio)
+        
 
 
 
 <a id="1.-overview"></a>
 ## 1. Overview
+In general, the Avimesa 1000 features:
+
+1. Seven (7) analog channels used to (primarily) interface with 4-20 mA sensors
+2. Up to nine (9) GPIO channels (0-3.3VDC), configurable as input/output/latching/etc. exposed on a 40-pin header 
+3. Power supply / sensor power monitoring
+4. Avimesa Device Cloud Synchronization capability
+5. Device configuration for measurement schedule and sensor options
+
+
 Figure 1 calls out the main components that are used in this guide:
 
-A. Power Switch<br>
-B. NFC Header (for future use)<br>
-C. Antenna Connector (type U.FL)<br>
-D. Programming LED<br>
-E. LEDs 1-3 (left to right)<br>
-F. Reset Button<br>
-G. Power Connector<br>
-H. Analog Channels 1-7 (left to right)<br>
-I. Avimesa Header (GPIO channels 9-17)<br>
-J. Shield Solder Point<br>
+&nbsp;&nbsp;&nbsp; A. Power Switch<br>
+&nbsp;&nbsp;&nbsp; B. NFC Header (for future use)<br>
+&nbsp;&nbsp;&nbsp; C. Antenna Connector (type U.FL)<br>
+&nbsp;&nbsp;&nbsp; D. Programming LED<br>
+&nbsp;&nbsp;&nbsp; E. LEDs 1-3 (left to right)<br>
+&nbsp;&nbsp;&nbsp; F. Reset Button<br>
+&nbsp;&nbsp;&nbsp; G. Power Connector<br>
+&nbsp;&nbsp;&nbsp; H. Analog Channels 1-7 (left to right)<br>
+&nbsp;&nbsp;&nbsp; I. Avimesa 40-pin Header (GPIO channels 9-17)<br>
+&nbsp;&nbsp;&nbsp; J. Shield Solder Point<br>
 
 
 ![ug-callouts](images/ug-callouts.png)<br>
@@ -66,7 +82,7 @@ J. Shield Solder Point<br>
 <a id="2.-quick-start"></a>
 ## 2. Quick Start
 
-The following assumes that the Avimesa Gateway is configured and running.  Please see https://github.com/Avimesa/user-guide-avimesa-gateway for help on setting up the Avimesa Gateway.
+The following assumes that the Avimesa Gateway is configured and running.  Please see [here](https://github.com/Avimesa/user-guide-avimesa-gateway) for help on setting up the Avimesa Gateway.
 
 1. Attach the antenna to the `Antenna Connector` (Figure 1-C)
 2. Attach power to the `Power Connector` (Figure 1-G)
@@ -151,6 +167,7 @@ Simply click the antenna to the `Antenna Connector` (Figure 1-C)
 [Top](#toc)<br>
 <a id="5.-device-modes"></a>
 ## 5. Device Modes
+In general, the device runs through a sequence of acquiring data from the attached 4-20 mA sensors, synchronizing with the Avimesa Device Cloud, and sleeping.
 
 <a id="5.1-device-modes-led-test"></a>
 ### 5.1 LED Test Mode
@@ -232,8 +249,10 @@ The same information in text form:
 
 <a id="6.4-led-status-codes-fw-update-mode"></a>
 ### 6.4 Firmware Update Mode
+When in this mode, the state are represented by LEDs 1-3 using the following:
 
-**TODO**
+![ug-callouts](images/ug-led-states-fw-update-mode.png)<br>
+*Figure 5*
 
 
 
@@ -269,11 +288,39 @@ Although noise resistant by design, if using a shielded cable, you can solder an
 [Top](#toc)<br>
 <a id="8.-device-config"></a>
 ## 8. Device Configuration
-**TODO**
+The device is configured using the functionality exposed by the Avimesa API.  An example application, the Avimesa Toolkit (https://toolkit.avimesa.com), is available to be used for this and is located at https://github.com/Avimesa/toolkit-nodejs
+
+The JSON object used for device configuration can be referenced [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object)
+
+<a id="8.1-device-config-meas-sched"></a>
+### 8.1 Measurement Schedule / Sleep Time
+
+<a id="8.2-device-config-channel-settings"></a>
+### 8.2 Channel Settings
+The Avimesa 1000 features:
+
+1. Seven (7) analog channels used (primarily) interface with 4-20 mA sensors.  Each channel features sensor power, and is configurable for power savings
+2. Up to nine (9) GPIO channels, configurable as input/output/latching/etc.
+3. Power supply monitoring (enabled by default and un-configurable)
 
 
+Please reference the documentation [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object-dev-chans-ch-cfg) for more details.
 
+<a id="8.2.1-device-config-channel-settings-enable"></a>
+### 8.2.1 Channel Enabled
+Sets whether or not a channel is enabled or not.  Please reference the documentation [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object-dev-chans-ch-cfg) for more details.
 
+<a id="8.2.2-device-config-channel-settings-sched"></a>
+### 8.2.2 Channel Schedule
+For future use, set to 1 for now.  Please reference the documentation [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object-dev-chans-ch-cfg) for more details.
+
+<a id="8.2.3-device-config-channel-settings-settling-time"></a>
+### 8.2.3 4-20 mA Channel Settling Time
+Specifies the time duration in seconds that the system should settle a 4-20 mA sensor before acquiring data.  Please reference the documentation [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object-dev-chans-ch-cfg) for more details.
+
+<a id="8.2.4-device-config-channel-settings-gpio"></a>
+### 8.2.4 GPIO Channel Settings
+Specifies the whether a GPIO channel is an input/output, whether it is latching, etc.  Please reference the documentation [here](https://github.com/Avimesa/device-driver-scripts#04-the-dialtone-object-dev-chans-ch-cfg) for more details.
 
 
 
