@@ -110,6 +110,7 @@ Table 1 lists the power supply ratings.  A battery can be used or a DC power sup
 | Recommended | 12-24 VDC |
 | Maximum | 27.5 VDC |
 | Minimum | 5.0 VDC (silkscreen shows 10.5, but 5.0 is OK ;) |
+
 *Table 1*
 
 **It should be noted that the sensors are powered directly from the input voltage (minus a diode drop ~0.7 VDC)**.
@@ -235,6 +236,7 @@ The same information in text form:
 | Measuring     | Off      | Off            | Off      | **On**    | Off      | Off       | Off                 |
 | Synchronizing | Off      | Off            | Off      | Off       | Off      | **On**    | Off                 |
 | Updating      | Off      | Off            | Off      | Off       | Off      | **On**    | **Possible Blinks** |
+
 *Table 2*
 
 <a id="6.3-led-status-codes-service-mode"></a>
@@ -252,6 +254,7 @@ The same information in text form:
 | Connected     | Off      | **On**    | Off      | **On**    | Off      | **On**    | Off            |
 | Updating      | Off      | **On**    | Off      | **On**    | Off      | **On**    | **Possible Blinks** |
 | Flash Error   | **On**   | **On**    |  **On**  | **On**    | **On**   | **On**    | Off            |
+
 *Table 3*
 
 <a id="6.4-led-status-codes-fw-update-mode"></a>
@@ -278,6 +281,9 @@ When in this mode, the state are represented by LEDs 1-3 using the following:
 | 1 | 2 | 3 | 
 | --- | --- | --- |
 | Shield (optional) | Sensor Power | Signal Return |
+
+*Table 4*
+
 
 If looking at `Analog Channels 1-7` (Figure 1-H), pin 1 is on the left side.
 
