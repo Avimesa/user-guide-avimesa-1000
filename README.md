@@ -23,13 +23,13 @@ This project contains a user guide for the Avimesa 1000.  Designed to connect wi
 - [5. Device Modes](#5.-device-modes)
     - [5.1 LED Test Mode](#5.1-device-modes-led-test)
     - [5.2 Run Mode](#5.2-device-modes-run-mode)
-    - [5.3 Service Mode](#5.3-device-modes-service-mode)
-    - [5.4 Firmware Update Mode](#5.4-device-modes-fw-update-mode)
+    - [5.4 Service Mode](#5.3-device-modes-service-mode)
+    - [5.5 Firmware Update Mode](#5.4-device-modes-fw-update-mode)
 - [6. LED Status Codes](#6.-led-status-codes)
     - [6.1 LED Test Mode](#6.1-led-status-codes-led-test)
     - [6.2 Run Mode](#6.2-led-status-codes-run-mode)
-    - [6.3 Service Mode](#6.3-led-status-codes-service-mode)
-    - [6.4 Firmware Update Mode](#6.4-led-status-codes-fw-update-mode)
+    - [6.4 Service Mode](#6.4-led-status-codes-service-mode)
+    - [6.5 Firmware Update Mode](#6.5-led-status-codes-fw-update-mode)
 - [7. Sensor Connection](#7.-sensor-conn)
     - [7.1 Pinout](#7.1-sensor-conn-pinout)
     - [7.2 Shielded Cables](#7.2-sensor-conn-shield)
@@ -167,7 +167,11 @@ Simply click the antenna to the `Antenna Connector` (Figure 1-C)
 [Top](#toc)<br>
 <a id="5.-device-modes"></a>
 ## 5. Device Modes
-In general, the device runs through a sequence of acquiring data from the attached 4-20 mA sensors, synchronizing with the Avimesa Device Cloud, and sleeping.
+In general, the device runs through a sequence of acquiring data from the attached 4-20 mA sensors, synchronizing with the Avimesa Device Cloud, and sleeping.  This is called `Run Mode`.
+
+A `Service Mode` is used for factory setup and is not typically used by end users.
+
+A `Firmware Update Mode` is used when updating the firmware.
 
 <a id="5.1-device-modes-led-test"></a>
 ### 5.1 LED Test Mode
@@ -175,7 +179,7 @@ Upon boot up or soft reset, the device will run through an `LED Test Mode`.  Thi
 
 <a id="5.2-device-modes-run-mode"></a>
 ### 5.2 Run Mode
-After boot up, the normal state of the device is `Run Mode`.  In the mode, the device will perform measurements and synchronize with the Avimesa Device Cloud based upon it's configuration.  The configuration is setup via the Avimesa Toolkit and is described in section **TODO**.
+After boot up, the normal state of the device is `Run Mode`.  In the mode, the device will perform measurements and synchronize with the Avimesa Device Cloud based upon it's configuration.  The configuration is setup via the Avimesa Toolkit and is described [here](#8.-device-config).
 
 <a id="5.3-device-modes-service-mode"></a>
 ### 5.3 Service Mode
@@ -186,7 +190,7 @@ When the device isn't configured it will boot up into `Service Mode`.  The devic
 
 <a id="5.4-device-modes-fw-update-mode"></a>
 ### 5.4 Firmware Update Mode
-When the device is in firmware update mode, no other functionality is available.  The device will reset automatically after the firmware update completes and resume normal operation.
+When the device is in `Firmware Update Mode`, no other functionality is available.  The device will reset automatically after the firmware update completes and resume normal operation.
 
 If the firmware update is interrupted, the device will revert the currently running firmware.
 
@@ -214,6 +218,8 @@ When in this mode, in general the LEDs represent the following:
 - LED3 - Device Cloud Connection Status
 - PROG LED - Program LED
 
+When sleeping, the device's power switch will be on, and all LEDs will be off.
+
 These states are represented by LEDs 1-3 using the following:
 
 ![ug-callouts](images/ug-led-states-run-mode.png)<br>
@@ -223,6 +229,7 @@ The same information in text form:
 
 | State         | LED1 Red | LED1 Blue      | LED2 Red | LED2 Blue | LED3 Red | LED3 Blue | PROG LED Green      |
 | ---           | ---      | ---            | ---      | ---       | ---      | ---       | ---                 |
+| Sleeping      | Off      | Off            | Off      | Off       |Off       | Off       | Off                 |
 | Disconnected  | Off      | **Fast Blink** | Off      | Off       | Off      | Off       | Off                 |
 | Connected     | Off      | **On**         | Off      | Off       | Off      | Off       | Off                 |
 | Measuring     | Off      | Off            | Off      | **On**    | Off      | Off       | Off                 |
