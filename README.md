@@ -109,7 +109,7 @@ Table 1 lists the power supply ratings.  A battery can be used or a DC power sup
 | --- | --- |
 | Recommended | 12-24 VDC |
 | Maximum | 27.5 VDC |
-| Minimum | 5.0 VDC (silkscreen shows 10.5, but 5.0 is OK ;) |
+| Minimum | 10.5 VDC |
 
 *Table 1*
 
